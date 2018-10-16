@@ -6579,6 +6579,11 @@ mapbox-gl@^0.47.0:
     tinyqueue "^1.1.0"
     vt-pbf "^3.0.1"
 
+mapbox-omt-lang@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mapbox-omt-lang/-/mapbox-omt-lang-1.1.0.tgz#6a4beb3ec1dd3ca62f6efd7425bfe862d218994e"
+  integrity sha512-FpqD/Yq8pyEtCcSOApQyJCEabGoFxVqeFQ8gSpEXvD9DA96SLjvyS3vtI2pk4p++EkBIrM8SwqLbnO2eVYd2Hg==
+
 marked@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.5.1.tgz#062f43b88b02ee80901e8e8d8e6a620ddb3aa752"

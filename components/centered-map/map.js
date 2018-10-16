@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {flowRight} from 'lodash'
+import {translate} from 'react-i18next'
 import mapboxgl from 'mapbox-gl'
+import MapboxOmtLang from 'mapbox-omt-lang'
+
 import mapStyle from 'mapbox-gl/dist/mapbox-gl.css'
 
 import enhanceMapData from './enhance-map-data'
@@ -14,7 +18,11 @@ class CenteredMap extends React.Component {
       features: PropTypes.array.isRequired
     }).isRequired,
     bbox: PropTypes.array.isRequired,
-    frozen: PropTypes.bool.isRequired
+    frozen: PropTypes.bool.isRequired,
+
+    i18n: PropTypes.shape({
+      language: PropTypes.string.isRequired
+    }).isRequired
   }
 
   state = {
@@ -42,15 +50,17 @@ class CenteredMap extends React.Component {
   }
 
   componentDidMount() {
-    const {frozen, bbox} = this.props
+    const {frozen, bbox, i18n} = this.props
 
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json',
       interactive: !frozen
     })
+    this.mapLanguage = new MapboxOmtLang(i18n.languages[0])
 
     this.map.once('load', this.onLoad)
+    this.map.addControl(this.mapLanguage)
 
     this.map.fitBounds(bbox, {
       padding: 30,
@@ -61,14 +71,19 @@ class CenteredMap extends React.Component {
     for (const {event, layer, handler} of this.handlers) {
       this.map.on(event, layer, handler)
     }
+
+    i18n.on('languageChanged', this.onLanguageChange)
   }
 
   componentWillUnmount() {
     const {map} = this
+    const {i18n} = this.props
 
     for (const {event, layer, handler} of this.handlers) {
       map.off(event, layer, handler)
     }
+
+    i18n.off('languageChanged', this.onLanguageChange)
   }
 
   onLoad = () => {
@@ -188,6 +203,12 @@ class CenteredMap extends React.Component {
     })
   }
 
+  onLanguageChange = () => {
+    const {i18n} = this.props
+
+    this.mapLanguage.setLanguage(i18n.languages[0])
+  }
+
   render() {
     const {highlight} = this.state
     const {data} = this.props
@@ -234,4 +255,7 @@ class CenteredMap extends React.Component {
   }
 }
 
-export default enhanceMapData(CenteredMap)
+export default flowRight(
+  enhanceMapData,
+  translate()
+)(CenteredMap)
