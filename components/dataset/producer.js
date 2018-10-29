@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import withFetch from '../hoc/with-fetch'
-
-const Producer = ({name, logo_thumbnail: logo}) => (
+const Producer = ({producer: {name, logo_thumbnail: logo}}) => (
   <div>
     <div className='wrapper'>
       <img src={logo} alt='' />
@@ -35,8 +33,10 @@ const Producer = ({name, logo_thumbnail: logo}) => (
 )
 
 Producer.propTypes = {
-  name: PropTypes.string.isRequired,
-  logo_thumbnail: PropTypes.string.isRequired
+  producer: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    logo_thumbnail: PropTypes.string.isRequired
+  }).isRequired
 }
 
-export default withFetch(data => data.organization)(Producer)
+export default Producer
