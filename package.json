@@ -23,7 +23,7 @@
     "express": "^4.16.3",
     "hoist-non-react-statics": "^3.3.0",
     "i18next": "^11.3.3",
-    "i18next-express-middleware": "^1.7.1",
+    "i18next-express-middleware": "^1.8.2",
     "i18next-node-fs-backend": "^2.0.0",
     "i18next-xhr-backend": "^2.0.1",
     "isomorphic-unfetch": "^3.0.0",
