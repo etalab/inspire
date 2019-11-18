@@ -37,7 +37,7 @@
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
-    "react-chartjs-2": "^2.7.2",
+    "react-chartjs-2": "^2.8.0",
     "react-dom": "^16.8.4",
     "react-i18next": "^7.7.0",
     "react-icons": "^2.2.7",
