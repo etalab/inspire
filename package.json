@@ -64,7 +64,7 @@
     "jest-junit": "^6.4.0",
     "lerna-changelog": "^0.8.0",
     "mock-local-storage": "^1.0.5",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.8.6",
     "styled-jsx-plugin-sass": "^1.0.0",
