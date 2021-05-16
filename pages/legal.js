@@ -19,7 +19,7 @@ const LegalPage = ({tReady}) => (
             <h1>Mentions légales</h1>
             <h3>Editeur</h3>
             <p>
-              Direction interministérielle du numérique et du système d’information et de communication de l’État (DINSIC)<br />
+              Direction interministérielle du numérique (DINUM)<br />
               {''}
               7, Avenue de Ségur<br />
               {''}
